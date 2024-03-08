@@ -15,7 +15,7 @@ const Sidebar = () => {
 
   return (
     <>
-        <div className="h-[calc(100vh-32px)] w-10 bg-dcam-600 py-8 z-10" onMouseEnter={() => setSidebarOpen(true)}>
+        <div className="h-[calc(100vh-48px)] w-10 bg-dcam-600 py-8 z-10" onMouseEnter={() => setSidebarOpen(true)}>
             <ul className="flex flex-col justify-center items-center">
                 <li className="h-[40px] grid items-center"><TbLayoutDashboard color="white" size="1.2rem" /></li>
                 <li className="h-[40px] grid items-center"><FaTasks color="white" /></li>
