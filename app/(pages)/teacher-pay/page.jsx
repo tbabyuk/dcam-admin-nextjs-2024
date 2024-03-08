@@ -45,8 +45,10 @@ const TeacherPayPage = () => {
       <table className="mx-auto bg-gray-200">
         <thead className="bg-gray-300">
           <tr>
-            <td className="py-2 px-4 font-semibold">Teacher</td>
-            <td className="py-2 px-4 font-semibold">Completed</td>
+            <td className="py-2 px-6 font-semibold text-center">Teacher</td>
+            <td className="py-2 px-6 font-semibold text-center">Completed</td>
+            <td className="py-2 px-6 font-semibold text-center">Total Owed</td>
+            <td className="py-2 px-6 font-semibold text-center">Payday</td>
           </tr>
         </thead>
         <tbody>
