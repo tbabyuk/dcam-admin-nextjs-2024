@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { Meta } from "@/models/models";
-import { connectToStaffDB } from "@/database/database";
-connectToStaffDB
+import { connectToStaffDB } from "@/database/config";
 
 
 
 export const POST = async (req) => {
+    
     const {name} = await req.json()
 
     try {

@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 
-
+input {
+  @apply py-1 px-2 text-gray-800 rounded mb-6 bg-gray-100
+}
 
 .dashboard-menu-item {
   @apply h-[40px] grid items-center ps-12 text-white text-[.9rem] hover:bg-dcam-600

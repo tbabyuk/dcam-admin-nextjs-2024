@@ -1,8 +1,16 @@
+"use client"
 
-
+import { useEffect } from "react"
+import { useAuthContext } from "@/context/AuthContext"
+import { useRouter } from "next/navigation"
 
 
 const Dashboard = () => {
+
+  const {authenticatedUser} = useAuthContext()
+  const router = useRouter()
+
+  console.log("the authenticated user is:", authenticatedUser)
   
   const dateString = "2024-03-01T05:00:00.000Z"
 
@@ -15,6 +23,11 @@ const Dashboard = () => {
   console.log(date, formattedDate)
 
 
+  useEffect(() => {
+    if(!authenticatedUser) {
+      router.push("/")
+    }
+  }, [])
 
 
   return (

@@ -23,7 +23,7 @@ const Sidebar = () => {
             </ul>
         </div>
 
-        <div className={`h-[calc(100vh-48px)] w-[170px] absolute py-8 bg-dcam-300 ${sidebarOpen ? "left-0" : "-left-[170px]" } duration-300 ease-in-out py-8`} onMouseLeave={() => setSidebarOpen(false)}>
+        <div className={`h-[calc(100vh-48px)] w-[170px] absolute py-8 bg-dcam-300 ${sidebarOpen ? "left-0" : "-left-[170px]"} duration-300 ease-in-out py-8`} onMouseLeave={() => setSidebarOpen(false)}>
             <ul className="flex flex-col">
                 <li className="dashboard-menu-item">
                     <Link href="/dashboard" onClick={() => setSidebarOpen(false)}>Dashboard</Link>
