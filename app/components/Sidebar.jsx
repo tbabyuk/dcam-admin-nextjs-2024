@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const Sidebar = () => {
   
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
 
   return (
