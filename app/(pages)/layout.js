@@ -21,7 +21,7 @@ export default function PagesLayout ({children}) {
           <Navbar />
           <div className="flex">
             <Sidebar />
-              {children}
+            {children}
           </div>
         </>
       )

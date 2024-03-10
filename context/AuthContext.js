@@ -2,8 +2,7 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "firebase/auth";
-
-import { auth } from "@/database/config";
+import { adminAuth } from "@/database/firebase-config";
 import { useRouter } from "next/navigation";
 
 
@@ -21,7 +20,7 @@ export const AuthContextProvider = ({children}) => {
     const logIn = async (email, password) => {
         try {
             setError(null)
-            await signInWithEmailAndPassword(auth, email, password)
+            await signInWithEmailAndPassword(adminAuth, email, password)
             router.push("/dashboard")
         } catch (error) {
             setError(error.message)
@@ -32,7 +31,7 @@ export const AuthContextProvider = ({children}) => {
 
     const logOut = async () => {
         try {
-            await signOut(auth)
+            await signOut(adminAuth)
             router.push("/")
         } catch (error) {
             console.log("Something went wrong while signing out:", error.message)
@@ -41,7 +40,7 @@ export const AuthContextProvider = ({children}) => {
 
 
     useEffect(() => {
-        const unsub = onAuthStateChanged(auth, (user) => {
+        const unsub = onAuthStateChanged(adminAuth, (user) => {
             console.log("useEffect ran")
 
             setAuthenticatedUser(user)

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Meta } from "@/models/models";
-import { connectToStaffDB } from "@/database/config";
+import { connectToMongoDB } from "@/database/mongo-config";
 
 
 
@@ -9,7 +9,7 @@ export const POST = async (req) => {
     const {name} = await req.json()
 
     try {
-        await connectToStaffDB()
+        await connectToMongoDB()
         const metaArray = await Meta.find({})
         
         return NextResponse.json({metaArray})
@@ -19,7 +19,6 @@ export const POST = async (req) => {
     }
 
     console.log("Logging name from API:", name)
-
 
     return NextResponse.json({message: "success"})
 

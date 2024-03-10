@@ -2,8 +2,6 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { auth } from "@/database/config"
-import { signInWithEmailAndPassword } from "firebase/auth"
 import { useAuthContext } from "@/context/AuthContext"
 
 

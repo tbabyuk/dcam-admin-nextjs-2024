@@ -1,4 +1,4 @@
-import { auth } from "@/database/config"
+import { adminAuth } from "@/database/firebase-config"
 import { NextResponse } from "next/server"
 
 
@@ -6,7 +6,7 @@ import { NextResponse } from "next/server"
 export const config = { matcher: ["/dashboard"] };
 
 
-console.log("logging auth from middleware..............:", auth.currentUser)
+console.log("logging auth from middleware..............:", adminAuth.currentUser)
 
 const name = "terry"
  
