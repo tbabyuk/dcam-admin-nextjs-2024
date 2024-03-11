@@ -62,12 +62,11 @@ const TeacherPayPage = () => {
           <tr className="bg-gray-500 text-gray-100">
             <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Teacher</td>
             <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Status</td>
-            {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Pay</td>}
             <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Payday</td>
-            <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Attendance</td>
-            <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 1 Notes</td>
-            <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 2 Notes</td>
-
+            {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Pay</td>}
+            {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Attendance</td>}
+            {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 1 Notes</td>}
+            {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 2 Notes</td>}
           </tr>
         </thead>
         <tbody>

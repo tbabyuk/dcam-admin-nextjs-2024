@@ -43,9 +43,9 @@ export const AttendanceModal = ({setAttendanceModalOpen, currentTeacher}) => {
   }, [])
 
   return (
-        <div className="fixed z-50 top-0 left-0 w-full h-[100vh] bg-black bg-opacity-80">
+        <div className="fixed z-50 top-0 left-0 w-full h-[100vh] bg-black bg-opacity-80 overflow-y-auto">
             <MdClose size="4rem" color="white" className="absolute cursor-pointer top-0 right-0" onClick={() => setAttendanceModalOpen(false)} />
-            <table className="mt-28 mx-auto bg-gray-200 text-[0.8rem] sm:text-[0.9rem]">
+            <table className="my-28 mx-auto bg-gray-200 text-[0.8rem] sm:text-[0.9rem]">
                 <thead>
                     <tr className="bg-gray-500 text-gray-100">
                         <td className="py-[10px] px-3 sm:px-6 font-semibold">Student</td>
@@ -59,10 +59,10 @@ export const AttendanceModal = ({setAttendanceModalOpen, currentTeacher}) => {
                     {teacherAttendance?.map((student, index) => (
                         <tr key={index} className="even:bg-gray-300">
                             <td className="py-2 px-3 sm:px-6">{student.name[0].toUpperCase() + student.name.slice(1)}</td>
-                            <td className="py-2 px-3 sm:px-6">{student.attendance.week1}</td>
-                            <td className="py-2 px-3 sm:px-6">${student.attendance.week1 === "present" || student.attendance.week1 === "counted" ? student.pay.toFixed(2) : "0.00"}</td>
-                            <td className="py-2 px-3 sm:px-6">{student.attendance.week2}</td>
-                            <td className="py-2 px-3 sm:px-6">${student.attendance.week1 === "present" || student.attendance.week1 === "counted" ? student.pay.toFixed(2) : "0.00"}</td>
+                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-700" : student.attendance.week1 === "counted" ? "text-orange-700" : "text-red-700"}`}>{student.attendance.week1}</td>
+                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-700" : student.attendance.week1 === "counted" ? "text-orange-700" : "text-red-700"}`}>${student.attendance.week1 === "present" || student.attendance.week1 === "counted" ? student.pay.toFixed(2) : "0.00"}</td>
+                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-700" : student.attendance.week1 === "counted" ? "text-orange-700" : "text-red-700"}`}>{student.attendance.week2}</td>
+                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-700" : student.attendance.week1 === "counted" ? "text-orange-700" : "text-red-700"}`}>${student.attendance.week1 === "present" || student.attendance.week1 === "counted" ? student.pay.toFixed(2) : "0.00"}</td>
                         </tr>
                     ))}
                 </tbody>

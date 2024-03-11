@@ -24,17 +24,17 @@ export const PayTableRow = ({metaDoc, handleModalFor}) => {
     <tr className="even:bg-gray-300">
         <td className="py-[10px] px-3 sm:px-6">{teacher[0].toUpperCase() + teacher.slice("1")}</td>
         <td className="py-[10px] px-3 sm:px-6">{!week2Submitted ? <MdRadioButtonUnchecked size="1.2rem" className="mx-auto" /> : <MdRadioButtonChecked size="1.2rem" color="green" className="mx-auto" />}</td>
-        {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6">${totalPay && totalPay.toFixed(2)}</td>}
         <td className="py-[10px] px-3 sm:px-6 text-nowrap">{formatDate()}</td>
-        <td className="py-[10px] px-3 sm:px-6 text-nowrap text-center">
+        {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6">${totalPay && totalPay.toFixed(2)}</td>}
+        {authenticatedUser?.displayName === "Terry" && <td className="px-3 sm:px-6 text-nowrap text-center">
             <button className="table-btn" onClick={() => handleModalFor(`${teacher}`)}>view</button>
-        </td>
-        <td className="py-[10px] px-3 sm:px-6 text-nowrap text-center">
+        </td>}
+        {authenticatedUser?.displayName === "Terry" && <td className="px-3 sm:px-6 text-nowrap text-center">
             <button className="table-btn" onClick={() => setAttendanceModalOpen(true)}>view</button>
-        </td>
-        <td className="py-[10px] px-3 sm:px-6 text-nowrap text-center">
+        </td>}
+        {authenticatedUser?.displayName === "Terry" && <td className="px-3 sm:px-6 text-nowrap text-center">
             <button className="table-btn" onClick={() => setAttendanceModalOpen(true)}>view</button>
-        </td>
+        </td>}
     </tr>
   )
 }

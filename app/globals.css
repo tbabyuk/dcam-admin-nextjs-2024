@@ -12,5 +12,5 @@ input {
 }
 
 .table-btn {
-  @apply bg-green-600 text-gray-100 rounded px-2
+  @apply bg-green-500 text-gray-100 rounded py-[2px] px-[10px]
 }
