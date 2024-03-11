@@ -4,18 +4,26 @@ import { PayTableRow } from "@/app/components/PayTableRow"
 import { useState, useEffect } from "react"
 import { useAuthContext } from "@/context/AuthContext"
 import { useRouter } from "next/navigation"
+import { AttendanceModal } from "@/app/components/AttendanceModal"
+
 
 
 
 
 const TeacherPayPage = () => {
 
-  const [attendanceData, setAttendanceData] = useState([])
-  const {authenticatedUser} = useAuthContext()
   const router = useRouter()
+  const {authenticatedUser} = useAuthContext()
+  const [attendanceMeta, setAttendanceMeta] = useState([])
+  const [attendanceModalOpen, setAttendanceModalOpen] = useState(false)
+  const [currentTeacher, setCurrentTeacher] = useState("")
 
 
-  console.log("Logging attendanceData state:", attendanceData)
+
+  const handleModalFor = (teacher) => {
+    setCurrentTeacher(teacher)
+    setAttendanceModalOpen(true)
+  }
 
 
   useEffect(() => {
@@ -30,17 +38,12 @@ const TeacherPayPage = () => {
     const getAttendanceStatus = async () => {
 
       try {
-        const res = await fetch("/api/get-attendance", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({name: "Luana"})
-        })
+
+        const res = await fetch("/api/get-attendance")
 
         const {metaArray} = await res.json()
 
-        setAttendanceData(metaArray)
+        setAttendanceMeta(metaArray)
 
       } catch (error) {
           console.log("Error getting response")
@@ -61,14 +64,21 @@ const TeacherPayPage = () => {
             <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Status</td>
             {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Pay</td>}
             <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Payday</td>
+            <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Attendance</td>
+            <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 1 Notes</td>
+            <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 2 Notes</td>
+
           </tr>
         </thead>
         <tbody>
-          {attendanceData?.map((metaDoc, index) => (
-            <PayTableRow key={index} metaDoc={metaDoc} />
+          {attendanceMeta?.map((metaDoc, index) => (
+            <PayTableRow key={index} metaDoc={metaDoc} handleModalFor={handleModalFor} />
           ))}
         </tbody>
       </table>
+      {attendanceModalOpen && 
+          <AttendanceModal setAttendanceModalOpen={setAttendanceModalOpen} currentTeacher={currentTeacher} />
+      }
     </div>
   )
 }

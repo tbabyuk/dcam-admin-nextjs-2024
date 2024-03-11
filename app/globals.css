@@ -10,3 +10,7 @@ input {
 .dashboard-menu-item {
   @apply h-[40px] grid items-center ps-12 text-white text-[.9rem] hover:bg-dcam-600
 }
+
+.table-btn {
+  @apply bg-green-600 text-gray-100 rounded px-2
+}

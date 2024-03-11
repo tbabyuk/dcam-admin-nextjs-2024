@@ -4,12 +4,12 @@ import { connectToMongoDB } from "@/database/mongo-config";
 
 
 
-export const POST = async (req) => {
+export const GET = async () => {
     
-    const {name} = await req.json()
-
     try {
         await connectToMongoDB()
+
+        // query meta collection
         const metaArray = await Meta.find({})
         
         return NextResponse.json({metaArray})
@@ -17,9 +17,5 @@ export const POST = async (req) => {
     } catch (error) {
         console.log("Error getting data from db")
     }
-
-    console.log("Logging name from API:", name)
-
-    return NextResponse.json({message: "success"})
 
 }
