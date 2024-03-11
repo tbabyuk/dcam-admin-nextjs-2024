@@ -5,7 +5,7 @@ import { MdRadioButtonChecked } from "react-icons/md";
 import { useAuthContext } from "@/context/AuthContext";
 
 
-export const PayTableRow = ({metaDoc, handleModalFor}) => {
+export const PayTableRow = ({metaDoc, handleModalFor, handleNotesModal}) => {
   
   const {teacher, week2Submitted, payday, totalPay} = metaDoc;
   const {authenticatedUser} = useAuthContext()
@@ -27,13 +27,13 @@ export const PayTableRow = ({metaDoc, handleModalFor}) => {
         <td className="py-[10px] px-3 sm:px-6 text-nowrap">{formatDate()}</td>
         {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6">${totalPay && totalPay.toFixed(2)}</td>}
         {authenticatedUser?.displayName === "Terry" && <td className="px-3 sm:px-6 text-nowrap text-center">
-            <button className="table-btn" onClick={() => handleModalFor(`${teacher}`)}>view</button>
+            <button className="table-btn" onClick={() => handleModalFor(teacher)}>view</button>
         </td>}
         {authenticatedUser?.displayName === "Terry" && <td className="px-3 sm:px-6 text-nowrap text-center">
-            <button className="table-btn" onClick={() => setAttendanceModalOpen(true)}>view</button>
+            <button className="table-btn" onClick={() => handleNotesModal(teacher, "week1Notes")}>view</button>
         </td>}
         {authenticatedUser?.displayName === "Terry" && <td className="px-3 sm:px-6 text-nowrap text-center">
-            <button className="table-btn" onClick={() => setAttendanceModalOpen(true)}>view</button>
+            <button className="table-btn" onClick={() => handleNotesModal(teacher, "week2Notes")}>view</button>
         </td>}
     </tr>
   )

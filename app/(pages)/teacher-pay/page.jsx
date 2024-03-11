@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { useAuthContext } from "@/context/AuthContext"
 import { useRouter } from "next/navigation"
 import { AttendanceModal } from "@/app/components/AttendanceModal"
-
+import { NotesModal } from "@/app/components/NotesModal"
 
 
 
@@ -16,13 +16,22 @@ const TeacherPayPage = () => {
   const {authenticatedUser} = useAuthContext()
   const [attendanceMeta, setAttendanceMeta] = useState([])
   const [attendanceModalOpen, setAttendanceModalOpen] = useState(false)
+  const [notesModalOpen, setNotesModalOpen] = useState(false)
   const [currentTeacher, setCurrentTeacher] = useState("")
+  const [currentWeek, setCurrentWeek] = useState("")
 
 
 
-  const handleModalFor = (teacher) => {
+  const handleAttendanceModal = (teacher) => {
     setCurrentTeacher(teacher)
     setAttendanceModalOpen(true)
+  }
+
+  const handleNotesModal = (teacher, week) => {
+    console.log("handleNotesModal fired:", teacher, week)
+    setCurrentTeacher(teacher)
+    setCurrentWeek(week)
+    setNotesModalOpen(true)
   }
 
 
@@ -71,12 +80,15 @@ const TeacherPayPage = () => {
         </thead>
         <tbody>
           {attendanceMeta?.map((metaDoc, index) => (
-            <PayTableRow key={index} metaDoc={metaDoc} handleModalFor={handleModalFor} />
+            <PayTableRow key={index} metaDoc={metaDoc} handleAttendanceModal={handleAttendanceModal} handleNotesModal={handleNotesModal} />
           ))}
         </tbody>
       </table>
       {attendanceModalOpen && 
           <AttendanceModal setAttendanceModalOpen={setAttendanceModalOpen} currentTeacher={currentTeacher} />
+      }
+      {notesModalOpen && 
+          <NotesModal setNotesModalOpen={setNotesModalOpen} currentTeacher={currentTeacher} currentWeek={currentWeek} />
       }
     </div>
   )
