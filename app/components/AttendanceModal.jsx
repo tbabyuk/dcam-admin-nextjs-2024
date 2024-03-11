@@ -59,10 +59,10 @@ export const AttendanceModal = ({setAttendanceModalOpen, currentTeacher}) => {
                     {teacherAttendance?.map((student, index) => (
                         <tr key={index} className="even:bg-gray-300">
                             <td className="py-2 px-3 sm:px-6">{student.name[0].toUpperCase() + student.name.slice(1)}</td>
-                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-700" : student.attendance.week1 === "counted" ? "text-orange-700" : "text-red-700"}`}>{student.attendance.week1}</td>
-                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-700" : student.attendance.week1 === "counted" ? "text-orange-700" : "text-red-700"}`}>${student.attendance.week1 === "present" || student.attendance.week1 === "counted" ? student.pay.toFixed(2) : "0.00"}</td>
-                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-700" : student.attendance.week1 === "counted" ? "text-orange-700" : "text-red-700"}`}>{student.attendance.week2}</td>
-                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-700" : student.attendance.week1 === "counted" ? "text-orange-700" : "text-red-700"}`}>${student.attendance.week1 === "present" || student.attendance.week1 === "counted" ? student.pay.toFixed(2) : "0.00"}</td>
+                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-600" : student.attendance.week1 === "counted" ? "text-orange-600" : "text-red-600"}`}>{student.attendance.week1}</td>
+                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-600" : student.attendance.week1 === "counted" ? "text-orange-600" : "text-red-600"}`}>${student.attendance.week1 === "present" || student.attendance.week1 === "counted" ? student.pay.toFixed(2) : "0.00"}</td>
+                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-600" : student.attendance.week1 === "counted" ? "text-orange-600" : "text-red-600"}`}>{student.attendance.week2}</td>
+                            <td className={`py-2 px-3 sm:px-6 ${student.attendance.week1 === "present" ? "text-green-600" : student.attendance.week1 === "counted" ? "text-orange-600" : "text-red-600"}`}>${student.attendance.week1 === "present" || student.attendance.week1 === "counted" ? student.pay.toFixed(2) : "0.00"}</td>
                         </tr>
                     ))}
                 </tbody>
