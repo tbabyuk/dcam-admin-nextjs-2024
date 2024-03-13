@@ -46,10 +46,10 @@ export const NotesModal = ({setNotesModalOpen, currentTeacher, currentWeek}) => 
 
   return (
         <div className="fixed z-50 top-0 left-0 w-full h-[100vh] bg-black bg-opacity-80 overflow-y-auto">
-            <MdClose size="4rem" color="white" className="absolute cursor-pointer top-0 right-0" onClick={() => setNotesModalOpen(false)} />
+            <MdClose size="4rem" color="white" className="absolute cursor-pointer top-3 right-3" onClick={() => setNotesModalOpen(false)} />
             
             {teacherNotes && (
-                <div className="my-28 p-10 mx-auto bg-gray-200 w-[600px]">{teacherNotes}</div>
+                <div className="my-28 p-10 mx-auto bg-gray-200 w-[600px]">{teacherNotes ? teacherNotes : "no notes"}</div>
             )}
         </div>
     )

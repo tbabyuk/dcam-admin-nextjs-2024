@@ -65,7 +65,7 @@ const TeacherPayPage = () => {
 
   
   return (
-    <div className="py-16 px-6 w-full">
+    <div className="py-16 px-6 w-full overflow-y-auto">
       <table className="mx-auto bg-gray-200 text-[0.8rem] sm:text-[0.9rem]">
         <thead>
           <tr className="bg-gray-500 text-gray-100">
