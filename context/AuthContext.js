@@ -46,8 +46,8 @@ export const AuthContextProvider = ({children}) => {
             setAuthenticatedUser(user)
             setAuthIsReady(true)
 
-            // updateProfile(auth.currentUser, {
-            //     displayName: "Terry"
+            // updateProfile(adminAuth.currentUser, {
+            //     displayName: "Demo"
             // })
             console.log("loggin user from onAuthStateChanged:", user)
         })

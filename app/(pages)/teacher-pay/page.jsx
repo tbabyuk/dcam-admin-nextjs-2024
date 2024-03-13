@@ -48,7 +48,13 @@ const TeacherPayPage = () => {
 
       try {
 
-        const res = await fetch("/api/get-attendance")
+        const res = await fetch("/api/get-attendance", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({user: authenticatedUser.displayName })
+        })
 
         const {metaArray} = await res.json()
 
@@ -72,10 +78,10 @@ const TeacherPayPage = () => {
             <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Teacher</td>
             <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Status</td>
             <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Payday</td>
-            {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Pay</td>}
-            {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Attendance</td>}
-            {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 1 Notes</td>}
-            {authenticatedUser?.displayName === "Terry" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 2 Notes</td>}
+            {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Pay</td>}
+            {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Attendance</td>}
+            {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 1 Notes</td>}
+            {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 2 Notes</td>}
           </tr>
         </thead>
         <tbody>

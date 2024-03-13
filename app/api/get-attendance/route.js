@@ -4,14 +4,23 @@ import { connectToMongoDB } from "@/database/mongo-config";
 
 
 
-export const GET = async () => {
+export const POST = async (req) => {
+
+    const {user} = await req.json()
+
+    console.log("Logging user from API:", user)
     
     try {
         await connectToMongoDB()
 
+        if (user === "Demo") {
+            console.log("If block fired++++++++++++++++++++=")
+            const metaArray = await Meta.find({$or: [{teacher: "demo1"}, {teacher: "demo2"}, {teacher: "demo3"}]}).limit(3)
+            return NextResponse.json({metaArray})
+        }
+
         // query meta collection
         const metaArray = await Meta.find({})
-        
         return NextResponse.json({metaArray})
 
     } catch (error) {
