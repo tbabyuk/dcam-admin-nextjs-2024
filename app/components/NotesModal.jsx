@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 
 
-export const NotesModal = ({setNotesModalOpen, currentTeacher, currentWeek}) => {
+export const NotesModal = ({handleCloseNotesModal, currentTeacher, currentWeek}) => {
 
   console.log("logging current teacher from AttendanceModal:", currentTeacher)
 
@@ -45,9 +45,8 @@ export const NotesModal = ({setNotesModalOpen, currentTeacher, currentWeek}) => 
   }, [])
 
   return (
-        <div className="fixed z-50 top-0 left-0 w-full h-[100vh] bg-black bg-opacity-80 overflow-y-auto">
-            <MdClose size="4rem" color="white" className="absolute cursor-pointer top-3 right-3" onClick={() => setNotesModalOpen(false)} />
-            
+        <div className="fixed z-50 top-0 left-0 w-full h-[100vh] bg-black bg-opacity-80 overflow-y-auto" onClick={(e) => handleCloseNotesModal(e)}>
+            <MdClose size="4rem" color="white" className="absolute cursor-pointer top-3 right-3" />
             {teacherNotes && (
                 <div className="my-28 p-10 mx-auto bg-gray-200 w-[600px]">{teacherNotes ? teacherNotes : "no notes"}</div>
             )}

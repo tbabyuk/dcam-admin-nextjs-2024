@@ -18,3 +18,7 @@ input {
 .nav-btn {
   @apply border-2 border-gray-300 rounded px-2 hover:bg-dcam-300
 }
+
+button:disabled {
+  @apply bg-gray-400
+}

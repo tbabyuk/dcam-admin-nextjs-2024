@@ -22,6 +22,19 @@ const TeacherPayPage = () => {
 
 
 
+  const handleCloseAttendanceModal = (e) => {
+    if(e.target.tagName === "DIV" || e.target.tagName === "path") {
+      setAttendanceModalOpen(false)
+    }
+  }
+
+  const handleCloseNotesModal = (e) => {
+    if(e.target.tagName === "DIV" || e.target.tagName === "path") {
+      setNotesModalOpen(false)
+    }  
+  }
+
+
   const handleAttendanceModal = (teacher) => {
     setCurrentTeacher(teacher)
     setAttendanceModalOpen(true)
@@ -91,10 +104,10 @@ const TeacherPayPage = () => {
         </tbody>
       </table>
       {attendanceModalOpen && 
-          <AttendanceModal setAttendanceModalOpen={setAttendanceModalOpen} currentTeacher={currentTeacher} />
+          <AttendanceModal handleCloseAttendanceModal={handleCloseAttendanceModal} currentTeacher={currentTeacher} />
       }
       {notesModalOpen && 
-          <NotesModal setNotesModalOpen={setNotesModalOpen} currentTeacher={currentTeacher} currentWeek={currentWeek} />
+          <NotesModal handleCloseNotesModal={handleCloseNotesModal} currentTeacher={currentTeacher} currentWeek={currentWeek} />
       }
     </div>
   )
