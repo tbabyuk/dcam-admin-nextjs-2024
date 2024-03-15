@@ -13,7 +13,7 @@ export const PayTableRow = ({metaDoc, handleAttendanceModal, handleNotesModal}) 
 
   const formatDate = () => {
     const date = new Date(payday)
-    const options = { month: "short", day: "numeric", year: "2-digit" };
+    const options = { month: "short", day: "numeric", year: "numeric" };
     const formattedDate = date.toLocaleString("en-US", options);
     return formattedDate
   }
@@ -33,9 +33,11 @@ export const PayTableRow = ({metaDoc, handleAttendanceModal, handleNotesModal}) 
         {authenticatedUser?.displayName !== "Heather" && <td className="px-3 sm:px-6 text-nowrap text-center">
             <button className="table-btn" disabled={!week2Submitted} onClick={() => handleAttendanceModal(teacher)}>view</button>
         </td>}
+
         {authenticatedUser?.displayName !== "Heather" && <td className="px-3 sm:px-6 text-nowrap text-center">
             <button className="table-btn" disabled={!week2Submitted} onClick={() => handleNotesModal(teacher, "week1Notes")}>view</button>
         </td>}
+
         {authenticatedUser?.displayName !== "Heather" && <td className="px-3 sm:px-6 text-nowrap text-center">
             <button className="table-btn" disabled={!week2Submitted} onClick={() => handleNotesModal(teacher, "week2Notes")}>view</button>
         </td>}
