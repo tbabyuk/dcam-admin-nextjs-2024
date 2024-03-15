@@ -34,7 +34,6 @@ const TeacherPayPage = () => {
     }  
   }
 
-
   const handleAttendanceModal = (teacher) => {
     setCurrentTeacher(teacher)
     setAttendanceModalOpen(true)
@@ -59,6 +58,8 @@ const TeacherPayPage = () => {
 
     const getAttendanceStatus = async () => {
 
+      console.log("getAttendanceStatus from useEffect fired!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
       try {
 
         const res = await fetch("/api/get-attendance", {
@@ -66,7 +67,7 @@ const TeacherPayPage = () => {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({user: authenticatedUser.displayName })
+          body: JSON.stringify({user: authenticatedUser.displayName})
         })
 
         const {metaArray} = await res.json()
