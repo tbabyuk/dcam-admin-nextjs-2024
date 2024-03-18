@@ -21,7 +21,7 @@ export const LoginForm = () => {
 
   return (
         <form className="flex flex-col w-[330px] bg-black bg-opacity-30 text-gray-100 rounded-md mx-auto px-10 py-8" onSubmit={handleLogin}>
-            <h2 className="text-xl text-center mt-2 mb-6">Staff Login</h2>
+            <h2 className="text-xl text-center mt-2 mb-6">Admin Login</h2>
             <label>
                 <span className="block mb-1">Email:</span>
                 <input 
