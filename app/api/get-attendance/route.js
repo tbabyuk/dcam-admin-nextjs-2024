@@ -28,5 +28,4 @@ export const POST = async (req) => {
     } catch (error) {
         console.log("Error getting data from db")
     }
-
 }
