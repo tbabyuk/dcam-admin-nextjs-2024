@@ -20,7 +20,9 @@ export const POST = async (req) => {
         }
 
         // query meta collection
-        const metaArray = await Meta.find({})
+        // const metaArray = await Meta.find({})
+        const metaArray = await Meta.find({ teacher: { $nin: ["demo1", "demo2", "demo3", "demo4", "demo5"] } });
+
         return NextResponse.json({metaArray})
 
     } catch (error) {
