@@ -8,7 +8,7 @@ const Navbar = () => {
 
   const {logOut, authenticatedUser} = useAuthContext()
 
-  console.log("logging authenticatedUser from Navbar:", authenticatedUser)
+  console.log("logging authenticatedUser from Navbar:", authenticatedUser?.displayName)
 
   
   return (
@@ -16,7 +16,7 @@ const Navbar = () => {
         <Link href="/" className="flex-shrink-0"><img src="/dcam-logo-white-long.png" width="110px" /></Link>
         <div className="flex gap-4 sm:gap-6">
           {authenticatedUser && (<span className="flex items-center text-nowrap">Hello, {authenticatedUser?.displayName}</span>)}
-          <img src="/avatar1.jpg" className="h-[34px] rounded-full" />
+          <img src={authenticatedUser?.displayName === "Heather" ? "/heather_profile.png" : authenticatedUser?.displayName === "Terry" ? "/terry_profile.jpg" : "/avatar1.jpg"} className="h-[34px] rounded-full" />
           {authenticatedUser && (<button className="nav-btn flex items-center text-nowrap" onClick={() => logOut()}>Log Out</button>)}
         </div>
     </div>
