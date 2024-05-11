@@ -76,6 +76,36 @@ const studentSchema = new Schema({
 
 
 
+const rentalSchema = new Schema({
+    student_name: {
+        type: String,
+        required: true
+    },
+    parent_name: {
+        type: String,
+        required: true
+    },
+    rental_item: {
+        type: String,
+        required: true
+    },
+    serial_num: {
+        type: String,
+        required: true
+    },
+    start_date: {
+        type: Date,
+        required: true
+    },
+    billing_date: {
+        type: String,
+        required: true
+    }
+}, {timestamps: true})
+
+
+
 export const User = models.User || model("User", userSchema)
 export const Meta = models.Meta || model("Meta", metaSchema)
 export const Student = models.Student || model("Student", studentSchema)
+export const Rental = models.Rental || model("Rental", rentalSchema)

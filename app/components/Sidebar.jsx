@@ -3,6 +3,9 @@
 import { TbLayoutDashboard } from "react-icons/tb";
 import { FaTasks } from "react-icons/fa";
 import { TbReportMoney } from "react-icons/tb";
+import { PiGuitar } from "react-icons/pi";
+
+
 
 import { useState } from "react";
 import Link from "next/link";
@@ -20,6 +23,7 @@ const Sidebar = () => {
                 <li className="h-[40px] grid items-center"><TbLayoutDashboard color="white" size="1.2rem" /></li>
                 <li className="h-[40px] grid items-center"><FaTasks color="white" /></li>
                 <li className="h-[40px] grid items-center"><TbReportMoney color="white" size="1.4rem" /></li>
+                <li className="h-[40px] grid items-center"><PiGuitar color="white" size="1.4rem" /></li>
             </ul>
         </div>
 
@@ -33,6 +37,9 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <Link href="/teacher-pay" className="dashboard-menu-item" onClick={() => setSidebarOpen(false)}>Teacher Pay</Link>
+                </li>
+                <li>
+                    <Link href="/rentals" className="dashboard-menu-item" onClick={() => setSidebarOpen(false)}>Rentals</Link>
                 </li>
             </ul>
         </div>
