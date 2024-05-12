@@ -2,6 +2,20 @@
 
 import { MdClose } from "react-icons/md";
 import { useState } from "react";
+import { FaChild } from "react-icons/fa";
+import { FaPerson } from "react-icons/fa6";
+import { FaTag } from "react-icons/fa";
+import { CgHashtag } from "react-icons/cg";
+import { IoCalendarNumber } from "react-icons/io5";
+import { IoCalendarNumberOutline } from "react-icons/io5";
+import { FaDollarSign } from "react-icons/fa6";
+import { adminDB } from "@/database/firebase-config";
+import { collection } from "firebase/firestore"
+import { addDoc, serverTimestamp } from "firebase/firestore";
+
+
+
+const rentalsRef = collection(adminDB, "rentals");
 
 
 export const NewRentalModal = ({handleCloseNewRentalModal}) => {
@@ -12,11 +26,17 @@ export const NewRentalModal = ({handleCloseNewRentalModal}) => {
     rental_item: "",
     serial_num: "",
     start_date: "",
+    dcam_cost: "",
+    customer_cost: "",
     billing_date: ""
   })
 
 
+  console.log("Logging newRentalObject:", newRentalObject)
+
+
   const handleChange = (e) => {
+    console.log("handleChange fired", e)
     setNewRentalObject(prev => ({
         ...prev,
         [e.target.name]: e.target.value
@@ -27,90 +47,115 @@ export const NewRentalModal = ({handleCloseNewRentalModal}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-        const res = await fetch("/api/post-new-rental", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newRentalObject)
-        });
-        if(!res.ok) {
-            throw new Error("Failed to submit form")
+        console.log("logging newRentalObject", newRentalObject)
+        
+        try {
+            await addDoc(rentalsRef, {...newRentalObject, created_at: serverTimestamp()})
+            console.log("Document added successfully")
+        } catch(err) {
+            console.log("An error occurred:", err.message)
         }
-        console.log("Form submitted!", res)
-
-    } catch (error) {
-        console.error("Error submitting form:", error.message)
-    }
   }
 
 
   return (
         <div className="overlay fixed z-50 top-0 left-0 w-full h-[100vh] bg-black bg-opacity-80 overflow-y-auto" onClick={(e) => handleCloseNewRentalModal(e)}>
             <MdClose size="4rem" color="white" className="exit absolute cursor-pointer top-3 right-3" />
-            <form className="form-control w-[380px] max-w-[90%] mt-[50px] bg-gray-100 py-5 px-10 mx-auto" onSubmit={handleSubmit}>
-                <h2 className="text-lg font-semibold text-center pb-8">New Rental Form</h2>
-                <label>
-                    Student Name:
+            <form className="form-control w-[380px] max-w-[90%] mt-[70px] bg-gray-100 py-5 px-6 md:px-10 rounded-md mx-auto" onSubmit={handleSubmit}>
+                <h2 className="text-lg font-semibold text-gray-600 text-center pb-6">New Rental Form</h2>
+                <label className="input input-sm input-bordered flex items-center gap-4 mb-4">
+                    <FaChild className="text-gray-500" size="1rem" />
                     <input 
                         type="text"
+                        className="grow"
+                        placeholder="student name"
                         name="student_name"
-                        className="form-input w-[100%] bg-gray-200 mt-1" 
-                        onChange={handleChange} 
+                        value={newRentalObject.student_name}
+                        onChange={handleChange}
+                        required
                     />
                 </label>
-                <label>
-                    Parent Name:
+                <label className="input input-sm input-bordered flex items-center gap-4 mb-4">
+                    <FaPerson className="text-gray-500" size="1.2rem" />
                     <input 
-                        type="text"
+                        type="text" 
+                        className="grow" 
+                        placeholder="parent name" 
                         name="parent_name"
-                        className="form-input w-[100%] bg-gray-200 mt-1"
-                        onChange={handleChange} 
+                        value={newRentalObject.parent_name}
+                        onChange={handleChange}
+                        required 
                     />
                 </label>
-                <label>
-                    Rental Item:
-                    <select
+                <label className="input input-sm input-bordered flex items-center gap-4 mb-4">
+                    <FaTag className="text-gray-500" size="0.8rem" />
+                    <input 
+                        type="text" 
+                        className="grow" 
+                        placeholder="rental item"
                         name="rental_item"
-                        className="form-input w-[100%] bg-gray-200 mt-1" 
-                        onChange={handleChange}>
-                            <option value="guitar">guitar</option>
-                            <option value="keyboard">keyboard</option>
-                            <option value="ukulele">ukulele</option>
-                    </select>
+                        value={newRentalObject.rental_item}
+                        onChange={handleChange}
+                        required 
+                    />
                 </label>
-                <label>
-                    Serial #:
+                <label className="input input-sm input-bordered flex items-center gap-4 mb-4">
+                    <CgHashtag className="text-gray-500" size="1rem" />
                     <input 
-                        type="text"
+                        type="text" 
+                        className="grow" 
+                        placeholder="serial number"
                         name="serial_num"
-                        className="form-input w-[100%] bg-gray-200 mt-1"
-                        onChange={handleChange} 
+                        value={newRentalObject.serial_num}
+                        onChange={handleChange}
+                        required 
                     />
-                </label>
-                <label>
-                    Rental Start Date:
+                </label>                
+                <label className="input input-sm input-bordered flex items-center gap-4 mb-4">
+                    <IoCalendarNumber className="text-gray-500" />
                     <input 
-                        type="date"
+                        type="date" 
+                        className="grow" 
                         name="start_date"
-                        className="form-input w-[100%] bg-gray-200 mt-1"
+                        value={newRentalObject.start_date}
                         onChange={handleChange}
-                    />
+                        required />
                 </label>
-                <label>
-                    Monthly Billing Date:
+                <label className="input input-sm input-bordered flex items-center gap-4 mb-4">
+                    <IoCalendarNumberOutline className="text-gray-500" />
                     <input 
-                        type="text"
+                        type="text" 
+                        className="grow" 
+                        placeholder="billing date" 
                         name="billing_date"
-                        className="form-input w-[100%] bg-gray-200 mt-1" 
-                        placeholder="e.g. 5th of each month"
+                        value={newRentalObject.billing_date}
                         onChange={handleChange}
-                    />
-                </label>
-                <button className="bg-green-600 hover:bg-green-700 py-2 rounded text-gray-100">Submit</button>
+                        required />
+                </label>         
+                <label className="input input-sm input-bordered flex items-center gap-4 mb-4">
+                    <FaDollarSign className="text-gray-500" />
+                    <input 
+                        type="number" 
+                        className="grow"
+                        placeholder="our cost"
+                        name="dcam_cost"
+                        value={newRentalObject.dcam_cost}
+                        onChange={handleChange}
+                        required />
+                </label>                
+                <label className="input input-sm input-bordered flex items-center gap-4 mb-4">
+                    <FaDollarSign className="text-gray-500" />
+                    <input 
+                        type="number" 
+                        className="grow"
+                        placeholder="customer cost"
+                        name="customer_cost"
+                        value={newRentalObject.customer_cost}
+                        onChange={handleChange}
+                        required />
+                </label>                               
+                <button className="btn btn-md btn-primary">Submit</button>
             </form>
-            <div>I am a modal</div>
         </div>
     )
 }

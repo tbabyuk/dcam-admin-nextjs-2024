@@ -8,13 +8,13 @@ let mongoDBConnected = false;
 export const connectToMongoDB = async () => {
     mongoose.set("strictQuery", true);
 
-    // if(mongoDBConnected) {
-    //     console.log("MongoDB is already connected")
-    //     return
-    // }
+    if(mongoDBConnected) {
+        console.log("MongoDB is already connected")
+        return
+    }
 
     try {
-        await connect(process.env.MONGODB_URI_ADMIN);
+        await connect(process.env.MONGODB_URI_STAFF);
         mongoDBConnected = true;
         console.log("Connection established to dcam_admin collection")
     } catch (error) {

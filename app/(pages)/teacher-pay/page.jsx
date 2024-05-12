@@ -85,10 +85,10 @@ const TeacherPayPage = () => {
 
   
   return (
-    <div className="py-16 px-6 w-full overflow-y-auto">
-      <table className="mx-auto bg-gray-200 text-[0.8rem] sm:text-[0.9rem]">
+    <div className="py-16 w-[60%] mx-auto overflow-y-auto">
+      <table className="table table-zebra">
         <thead>
-          <tr className="bg-gray-500 text-gray-100">
+          <tr className="bg-secondary text-gray-100">
             <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Teacher</td>
             <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Status</td>
             <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Payday</td>

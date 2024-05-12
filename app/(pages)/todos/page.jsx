@@ -7,7 +7,7 @@ import { adminDB } from "@/database/firebase-config"
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore"
 
 
-const todosRef = collection(adminDB, "todos")
+const todosRef = collection(adminDB, "todos");
 
 const Todos = () => {
 
