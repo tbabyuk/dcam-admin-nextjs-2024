@@ -14,7 +14,7 @@ export const connectToMongoDB = async () => {
     }
 
     try {
-        await connect(process.env.MONGODB_URI_STAFF);
+        await connect(process.env.MONGODB_URI);
         mongoDBConnected = true;
         console.log("Connection established to dcam_admin collection")
     } catch (error) {
