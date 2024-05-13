@@ -9,7 +9,7 @@
 */
 
  .dashboard-menu-item {
-  @apply h-[40px] grid items-center ps-12 text-[.9rem] text-gray-100;
+  @apply h-[40px] grid items-center ps-12 text-[.9rem] text-gray-100 hover:bg-primary;
 }
 
 .table-btn {

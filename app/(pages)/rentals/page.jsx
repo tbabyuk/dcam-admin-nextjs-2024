@@ -18,7 +18,8 @@ const RentalsPage = () => {
     const [activeRentals, setActiveRentals] = useState([]);
 
     const handleCloseNewRentalModal = (e) => {
-        if(e.target.tagName === "DIV" || e.target.tagName === "path" || e.target.tagName === "svg") {
+        console.log("logging target classname:", e.target.tagName)
+        if(e.target.tagName === "DIV" || e.target.tagName === "SPAN") {
           setNewRentalModalOpen(false)
         }
       }
@@ -66,9 +67,9 @@ const RentalsPage = () => {
   
 
   return (
-    <div className="py-16 w-[70%] mx-auto overflow-y-auto">
+    <div className="py-16 w-[85%] mx-auto overflow-y-auto">
 
-        <button className="btn btn-accent btn-sm mb-10" onClick={() => setNewRentalModalOpen(true)}><IoMdAdd size="1.2rem" />New Rental</button>
+        <button className="btn btn-primary btn-sm mb-10" onClick={() => setNewRentalModalOpen(true)}><IoMdAdd size="1.2rem" />New Rental</button>
           <div className="overflow-x-auto mx-auto">
             <table className="table table-zebra">
               {/* head */}
