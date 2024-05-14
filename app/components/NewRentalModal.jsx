@@ -17,7 +17,7 @@ import { addDoc, serverTimestamp } from "firebase/firestore";
 const rentalsRef = collection(adminDB, "rentals");
 
 
-export const NewRentalModal = ({handleCloseNewRentalModal}) => {
+export const NewRentalModal = ({handleCloseNewRentalModal, setNewRentalModalOpen}) => {
 
   const [newRentalObject, setNewRentalObject] = useState({
     student_name: "",
@@ -51,6 +51,7 @@ export const NewRentalModal = ({handleCloseNewRentalModal}) => {
         try {
             await addDoc(rentalsRef, {...newRentalObject, created_at: serverTimestamp()})
             console.log("Document added successfully")
+            setNewRentalModalOpen(false)
         } catch(err) {
             console.log("An error occurred:", err.message)
         }

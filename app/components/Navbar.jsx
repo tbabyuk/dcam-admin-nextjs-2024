@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="flex gap-4 sm:gap-6">
           {authenticatedUser && (<span className="flex items-center text-nowrap">Hello, {authenticatedUser?.displayName}</span>)}
           <img src={authenticatedUser?.displayName === "Heather" ? "/heather_profile.png" : authenticatedUser?.displayName === "Terry" ? "/terry_profile.jpg" : "/avatar1.jpg"} className="h-[34px] rounded-full" />
-          {authenticatedUser && (<button className="btn btn-secondary btn-sm flex items-center text-nowrap" onClick={() => logOut()}>Log Out</button>)}
+          {authenticatedUser && (<button className="btn btn-accent btn-outline btn-sm flex items-center text-nowrap" onClick={() => logOut()}>Log Out</button>)}
         </div>
     </div>
   )
