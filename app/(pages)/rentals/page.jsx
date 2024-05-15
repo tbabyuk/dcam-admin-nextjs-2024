@@ -63,7 +63,7 @@ const RentalsPage = () => {
                   <th>Parent</th>
                   <th>Rental Item</th>
                   <th>Serial #</th>
-                  <th>Rental start date</th>
+                  <th>Rental start</th>
                   <th>Billing Date</th>
                   <th>DCAM Cost</th>
                   <th>Customer Cost</th>
