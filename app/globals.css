@@ -3,11 +3,6 @@
 @tailwind utilities;
 
 
-/* .form-input {
-  @apply py-1 px-2 text-gray-800 rounded mb-5 bg-gray-200
-}
-*/
-
  .dashboard-menu-item {
   @apply h-[40px] grid items-center ps-12 text-[.9rem] text-gray-100 hover:bg-primary;
 }
@@ -16,11 +11,7 @@
   @apply btn btn-sm bg-gray-300 font-normal;
 }
 
-/*
-.nav-btn {
-  @apply border-2 border-gray-300 rounded px-2 hover:bg-dcam-300
+.weekly-todos-day {
+  @apply flex-1 bg-gray-200 min-w-[120px] text-center text-sm;
 }
 
-button:disabled {
-  @apply bg-gray-400
-} */

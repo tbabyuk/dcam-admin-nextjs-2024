@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { TodosHeader } from "@/app/components/TodosHeader"
+import { WeeklyTodosSection } from "@/app/components/WeeklyTodosSection"
 import { TaskItem } from "@/app/components/TaskItem"
 import { adminDB } from "@/database/firebase-config"
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore"
@@ -50,6 +51,7 @@ const Todos = () => {
 
   return (
     <div className="h-[calc(100vh-48px)] p-6 overflow-y-auto">
+        <WeeklyTodosSection />
         <TodosHeader />
         {/* todos table */}
         <div className="bg-gray-100 grid grid-rows-3 md:grid-rows-none md:grid-cols-3 gap-0.5 mt-5 rounded">
