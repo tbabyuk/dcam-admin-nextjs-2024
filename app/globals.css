@@ -12,6 +12,6 @@
 }
 
 .weekly-todos-day {
-  @apply flex-1 bg-gray-200 min-w-[120px] text-center text-sm;
+  @apply flex-1 bg-gray-200 min-w-[120px] text-sm;
 }
 
