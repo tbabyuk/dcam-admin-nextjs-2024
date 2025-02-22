@@ -50,33 +50,34 @@ const RentalsPage = () => {
   
 
   return (
-    <div className="py-16 w-[80%] mx-auto overflow-y-auto">
-
-        <button className="btn btn-accent btn-outline btn-sm mb-10" onClick={() => setNewRentalModalOpen(true)}><IoMdAdd size="1.2rem" />New Rental</button>
-          <div className="overflow-x-auto mx-auto">
-            <table className="table table-zebra">
-              {/* head */}
-              <thead>
-                <tr className="bg-gray-500 uppercase text-gray-100">
-                  <th>#</th>
-                  <th>Student</th>
-                  <th>Parent</th>
-                  <th>Rental Item</th>
-                  <th>Serial #</th>
-                  <th>Rental start</th>
-                  <th>Billing Date</th>
-                  <th>DCAM Cost</th>
-                  <th>Customer Cost</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {activeRentals && 
-                    activeRentals.map((item, index) => (
-                      <RentalsTableRow key={item.id} item={item} index={index} />
-                    ))}
-              </tbody>
-            </table>
+    <div className="dcam-container text-center overflow-y-auto">
+          <div className="max-w-fit mx-auto">
+            <button className="flex btn btn-accent btn-outline btn-sm mb-10" onClick={() => setNewRentalModalOpen(true)}><IoMdAdd size="1.2rem" />New Rental</button>
+            <div className="overflow-x-auto">
+              <table className="max-w-fit mx-auto table table-zebra">
+                {/* head */}
+                <thead>
+                  <tr className="bg-gray-500 uppercase text-gray-100">
+                    <th>#</th>
+                    <th>Student</th>
+                    <th>Parent</th>
+                    <th>Rental Item</th>
+                    <th>Serial #</th>
+                    <th>Rental start</th>
+                    <th>Billing Date</th>
+                    <th>DCAM Cost</th>
+                    <th>Customer Cost</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {activeRentals && 
+                      activeRentals.map((item, index) => (
+                        <RentalsTableRow key={item.id} item={item} index={index} />
+                      ))}
+                </tbody>
+              </table>
+            </div>
           </div>
           {newRentalModalOpen && 
             <NewRentalModal handleCloseNewRentalModal={handleCloseNewRentalModal} setNewRentalModalOpen={setNewRentalModalOpen} />

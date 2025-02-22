@@ -31,9 +31,9 @@ const Dashboard = () => {
 
 
   return (
-    <div className="h-[calc(100vh-48px)] py-16 px-6 w-full overflow-y-auto">
-        <div className="mx-auto w-[60%]">
-          <h2 className="text-2xl font-semibold text-center mb-16 text-gray-700">
+    <div className="dcam-container">
+        <div className="mx-auto md:max-w-[80%] lg:max-w-[60%]">
+          <h2 className="text-2xl font-semibold text-center mb-12 text-gray-700">
             Our Mission Statement
           </h2>
           <h4 className="text-xl mb-3">
@@ -45,7 +45,7 @@ const Dashboard = () => {
             to impart this skill to our students.
           </p>
           <h4 className="text-xl mb-3">
-            2. To provide quality music education tailored to our students’ goals,
+            2. To provide quality music education tailored to our students&apos; goals,
             abilities, and interests
           </h4>
           <p className="mb-12 font-light">

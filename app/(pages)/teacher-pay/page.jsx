@@ -85,31 +85,33 @@ const TeacherPayPage = () => {
 
   
   return (
-    <div className="py-16 w-[60%] mx-auto overflow-y-auto">
-      <table className="table table-zebra">
-        <thead>
-          <tr className="bg-secondary text-gray-100">
-            <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Teacher</td>
-            <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Status</td>
-            <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Payday</td>
-            {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Pay</td>}
-            {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Attendance</td>}
-            {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 1 Notes</td>}
-            {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 2 Notes</td>}
-          </tr>
-        </thead>
-        <tbody>
-          {attendanceMeta?.map((metaDoc, index) => (
-            <PayTableRow key={index} metaDoc={metaDoc} handleAttendanceModal={handleAttendanceModal} handleNotesModal={handleNotesModal} />
-          ))}
-        </tbody>
-      </table>
-      {attendanceModalOpen && 
-          <AttendanceModal handleCloseAttendanceModal={handleCloseAttendanceModal} currentTeacher={currentTeacher} />
-      }
-      {notesModalOpen && 
-          <NotesModal handleCloseNotesModal={handleCloseNotesModal} currentTeacher={currentTeacher} currentWeek={currentWeek} />
-      }
+    <div className="dcam-container">
+        <div className="max-w-fit mx-auto overflow-x-auto">
+          <table className="table table-zebra">
+            <thead>
+              <tr className="bg-secondary text-gray-100">
+                <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Teacher</td>
+                <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Status</td>
+                <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Payday</td>
+                {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Pay</td>}
+                {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Attendance</td>}
+                {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 1 Notes</td>}
+                {authenticatedUser?.displayName !== "Heather" && <td className="py-[10px] px-3 sm:px-6 font-semibold text-center">Week 2 Notes</td>}
+              </tr>
+            </thead>
+            <tbody>
+              {attendanceMeta?.map((metaDoc, index) => (
+                <PayTableRow key={index} metaDoc={metaDoc} handleAttendanceModal={handleAttendanceModal} handleNotesModal={handleNotesModal} />
+              ))}
+            </tbody>
+          </table>
+          {attendanceModalOpen && 
+              <AttendanceModal handleCloseAttendanceModal={handleCloseAttendanceModal} currentTeacher={currentTeacher} />
+          }
+          {notesModalOpen && 
+              <NotesModal handleCloseNotesModal={handleCloseNotesModal} currentTeacher={currentTeacher} currentWeek={currentWeek} />
+          }
+        </div>
     </div>
   )
 }

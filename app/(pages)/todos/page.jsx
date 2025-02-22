@@ -50,7 +50,7 @@ const Todos = () => {
 
 
   return (
-    <div className="h-[calc(100vh-48px)] p-6 overflow-y-auto">
+    <div className="h-full w-full px-5 py-5 overflow-y-auto">
         <WeeklyTodosSection />
         <TodosHeader />
         {/* todos table */}
