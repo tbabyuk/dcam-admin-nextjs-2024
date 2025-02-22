@@ -50,7 +50,7 @@ const RentalsPage = () => {
   
 
   return (
-    <div className="dcam-container text-center overflow-y-auto">
+    <div className="dcam-container text-center">
           <div className="max-w-fit mx-auto">
             <button className="flex btn btn-accent btn-outline btn-sm mb-10" onClick={() => setNewRentalModalOpen(true)}><IoMdAdd size="1.2rem" />New Rental</button>
             <div className="overflow-x-auto">
