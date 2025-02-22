@@ -2,17 +2,14 @@
 
 import Navbar from "../components/Navbar"
 import Sidebar from "../components/Sidebar"
+import { useState } from "react"
 import { useAuthContext } from "@/context/AuthContext"
-import { useRouter } from "next/navigation"
 
 
 export default function PagesLayout ({children}) {
 
-    const {authIsReady, authenticatedUser} = useAuthContext()
-    const router = useRouter()
-
-
-    console.log("logging authIsReady from layout:", authIsReady, authenticatedUser)
+    const {authIsReady} = useAuthContext()
+    const [sidebarOpen, setSidebarOpen] = useState(false)
 
 
     if(authIsReady) {
@@ -20,8 +17,10 @@ export default function PagesLayout ({children}) {
         <>
           <Navbar />
           <div className="flex">
-            <Sidebar />
-            {children}
+            <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+            <div className="w-full h-[100vh]" onClick={() => setSidebarOpen(false)}>
+              {children}
+            </div>
           </div>
         </>
       )

@@ -13,8 +13,10 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
-}, {timestamps: true})
+    },
+    availability: {
+        type: Array
+    }}, {timestamps: true})
 
 
 

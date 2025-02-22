@@ -8,7 +8,7 @@ const Navbar = () => {
 
   const {logOut, authenticatedUser} = useAuthContext()
 
-  console.log("logging authenticatedUser from Navbar:", authenticatedUser?.displayName)
+  // console.log("logging authenticatedUser from Navbar:", authenticatedUser?.displayName)
 
   
   return (
