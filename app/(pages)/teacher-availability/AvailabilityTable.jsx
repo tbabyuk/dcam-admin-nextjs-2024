@@ -19,7 +19,7 @@ export const AvailabilityTable = ({availability}) => {
             </thead>
             <tbody>
                 {availability?.map((item) => (
-                    <tr key={item.day} className="">
+                    <tr key={item.day}>
                         <td>{item.day}</td>
                         <td>{item.from ? `${item.from} - ${item.until}` : "not available"}</td>
                         <td>{item.subbingOkay ? <BsCheckCircle className="text-green-500 mx-auto" size="20px" /> : <BsXCircle  className="text-red-500 mx-auto" size="20px" />}</td>

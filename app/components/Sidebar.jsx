@@ -12,7 +12,7 @@ import Link from "next/link";
 const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
   
   return (
-    <div className="flex w-[100vh]">
+    <div className="flex h-[100vh]">
         <ul className="h-full w-10 py-8 bg-primary flex flex-col justify-start items-center z-20" onMouseEnter={() => setSidebarOpen(true)}>
             <li className="h-[40px] grid items-center"><TbLayoutDashboard color="white" size="1.2rem" /></li>
             <li className="h-[40px] grid items-center"><FaTasks color="white" /></li>

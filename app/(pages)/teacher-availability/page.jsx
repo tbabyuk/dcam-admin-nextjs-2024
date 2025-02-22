@@ -8,6 +8,7 @@ import { AvailabilityTable } from "./AvailabilityTable";
 const TeacherAvailabilityPage = () => {
 
     const {authenticatedUser} = useAuthContext()
+    const [selectedTeacher, setSelectedTeacher] = useState("choose teacher") 
     const [teachersList, setTeachersList] = useState([])
     const [availability, setAvailability] = useState([])
 
@@ -57,15 +58,20 @@ const TeacherAvailabilityPage = () => {
     <div className="py-16 w-[80%] mx-auto text-center overflow-y-auto">
         <p className="mb-3">Select teacher to see their weekly availability:</p>
         <select 
-            className="ps-2 w-[150px] h-9 mb-9 border-2 border-gray-200 rounded text-sm" 
-            onChange={(e) => getTeacherAvailability(e.target.value)}
+            className="ps-2 w-[150px] h-9 mb-9 border-2 border-gray-200 rounded text-sm"
+            value={selectedTeacher}
+            onChange={(e) => {
+              setSelectedTeacher(e.target.value)
+              getTeacherAvailability(e.target.value)
+            }}
         >
+            <option value="choose teacher" disabled>Choose Teacher</option>
             {teachersList && teachersList.map(teacher => (
-                <option key={teacher}>{teacher}</option>
+                <option key={teacher} value={teacher}>{teacher}</option>
             )) 
         }
         </select>
-        <AvailabilityTable availability={availability} />
+        {availability.length > 0 && <AvailabilityTable availability={availability} />}
     </div>
   )
 }
