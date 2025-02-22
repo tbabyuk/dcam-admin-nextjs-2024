@@ -21,7 +21,7 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
             <li className="h-[40px] grid items-center"><PiGuitar color="white" size="1.4rem" /></li>
         </ul>
 
-        <div className={`h-full w-[190px] py-8 bg-secondary absolute ${sidebarOpen ? "left-0" : "-left-[170px]"} duration-300 ease-in-out py-8 z-10`} onMouseLeave={() => setSidebarOpen(false)}>
+        <div className={`h-full w-[190px] py-8 bg-secondary absolute ${sidebarOpen ? "left-0" : "-left-[190px]"} duration-300 ease-in-out py-8 z-10`} onMouseLeave={() => setSidebarOpen(false)}>
             <ul className="flex flex-col">
                 <li>
                     <Link href="/dashboard" className="dashboard-menu-item" onClick={() => setSidebarOpen(false)}>Dashboard</Link>

@@ -18,7 +18,7 @@ export default function PagesLayout ({children}) {
           <Navbar />
           <div className="flex">
             <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-            <div className="w-full h-[100vh]" onClick={() => setSidebarOpen(false)}>
+            <div className="w-full -ms-[40px] ps-[40px] h-[100vh]" onClick={() => setSidebarOpen(false)}>
               {children}
             </div>
           </div>
