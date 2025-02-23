@@ -59,7 +59,7 @@ export const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
             </Link>
             <ul className="space-y-1 text-white/80">
                 {routes.map(route => (
-                    <Link href={route.href} className={`flex items-center flex-1 text-sm p-3 justify-start font-medium cursor-pointer hover:text-gray-100 hover:bg-white/10 transition"}`}>
+                    <Link key={route.label} href={route.href} className={`flex items-center flex-1 text-sm p-3 justify-start font-medium cursor-pointer hover:text-gray-100 hover:bg-white/10 transition"}`}>
                         <span className="mr-2">{route.icon}</span>{route.label}
                     </Link>
                 ))}
