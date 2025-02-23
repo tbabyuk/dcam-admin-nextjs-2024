@@ -56,7 +56,7 @@ const TeacherAvailabilityPage = () => {
 
   return (
     <div className="dcam-container text-center overflow-y-auto">
-        <p className="mb-3">Select teacher to see their weekly availability:</p>
+        <p className="mb-4">Select teacher to see their weekly availability:</p>
         <select 
             className="ps-2 w-[150px] h-9 mb-9 border-2 border-gray-200 rounded text-sm"
             value={selectedTeacher}
