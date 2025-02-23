@@ -18,11 +18,11 @@ export default function PagesLayout ({children}) {
           {/* Sidebar overlay */}
           <div className={`${sidebarOpen && "fixed h-full w-full bg-black/50 cursor-pointer"}`} onClick={() => setSidebarOpen(false)}>
             {/* Sidebar container */}
-            <div className={`fixed top-0 left-0 h-full w-[190px] bg-primary transition-transform duration-300 ease-in-out transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 z-[60]`}>
+            <div className={`fixed top-0 left-0 h-full px-3 w-[200px] bg-[#1c2941] transition-transform duration-300 ease-in-out transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 z-[60]`}>
               <Sidebar />
             </div>
           </div>
-          <div className="md:ps-[190px]">
+          <div className="md:ps-[200px]">
             <Navbar setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
             <main className="h-[calc(100vh-50px)]">
               {children}

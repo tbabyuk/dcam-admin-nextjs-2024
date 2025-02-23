@@ -7,6 +7,7 @@ import { PiGuitar } from "react-icons/pi";
 import { HiOutlineClock } from "react-icons/hi"
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 
 
@@ -44,7 +45,9 @@ const routes = [
 ]
 
 
-export const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
+export const Sidebar = () => {
+
+  const path = usePathname()
   
   return (
     <div className="flex h-[100vh]">
@@ -59,8 +62,9 @@ export const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
             </Link>
             <ul className="space-y-1 text-white/80">
                 {routes.map(route => (
-                    <Link key={route.label} href={route.href} className={`flex items-center flex-1 text-sm p-3 justify-start font-medium cursor-pointer hover:text-gray-100 hover:bg-white/10 transition"}`}>
-                        <span className="mr-2">{route.icon}</span>{route.label}
+                    <Link key={route.label} href={route.href} className={`flex items-center flex-1 text-sm p-3 rounded-lg justify-start font-medium cursor-pointer hover:text-gray-100 hover:bg-white/10 transition ${path === route.href && "text-gray-100 bg-white/10"}`}>
+                        <span className="mr-2">{route.icon}</span>
+                        <span className="text-[13px]">{route.label}</span>
                     </Link>
                 ))}
             </ul>
