@@ -4,7 +4,7 @@
 
 
 .dcam-container {
-  @apply h-full w-full px-5 py-16 overflow-y-auto;
+  @apply h-full w-full px-5 md:px-14 xl:px-32 py-16 overflow-y-auto;
 }
 
  .dashboard-menu-item {

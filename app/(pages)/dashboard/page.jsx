@@ -32,7 +32,7 @@ const Dashboard = () => {
 
   return (
     <div className="dcam-container">
-        <div className="mx-auto md:max-w-[80%] lg:max-w-[60%]">
+        <div className="mx-auto">
           <h2 className="text-2xl font-semibold text-center mb-12 text-gray-700">
             Our Mission Statement
           </h2>
