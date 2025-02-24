@@ -52,13 +52,17 @@ const TeacherAvailabilityPage = () => {
     useEffect(() => {
         getTeachersList()
     }, [])
-
+{/* <select className="select select-bordered w-full max-w-xs">
+  <option disabled selected>Who shot first?</option>
+  <option>Han Solo</option>
+  <option>Greedo</option>
+</select> */}
 
   return (
     <div className="dcam-container text-center overflow-y-auto">
         <p className="mb-4">Select teacher to see their weekly availability:</p>
         <select 
-            className="ps-2 w-[150px] h-9 mb-9 border-2 border-gray-200 rounded text-sm"
+            className="select w-full max-w-[280px] ps-2 h-9 mb-9 border-2 border-gray-200 rounded text-sm"
             value={selectedTeacher}
             onChange={(e) => {
               setSelectedTeacher(e.target.value)

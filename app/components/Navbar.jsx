@@ -11,7 +11,7 @@ export const Navbar = ({setSidebarOpen}) => {
 
   
   return (
-    <div className="h-[50px] bg-primary text-gray-100 px-5 lg:px-10 flex justify-between items-center">
+    <div className="h-[50px] bg-primary text-gray-100 px-3 md:px-5 flex justify-between items-center">
         <RxHamburgerMenu size="2rem" className="md:hidden cursor-pointer" onClick={() => setSidebarOpen(true)} />
         <div className="flex ms-auto gap-4 sm:gap-6">
           {authenticatedUser && (<span className="flex items-center text-nowrap">Hello, {authenticatedUser?.displayName}</span>)}
