@@ -1,34 +1,53 @@
 "use server"
 
-import { connectToMongoDB } from "@/database/mongo-config"
-import { User } from "@/models/models"
+
+const mailchimp = require("@mailchimp/mailchimp_marketing");
+import crypto from "crypto";
+
+mailchimp.setConfig({
+    apiKey: process.env.MAILCHIMP_API_KEY,
+    server: process.env.MAILCHIMP_SERVER_PREFIX
+});
+
+const audienceID = process.env.MAILCHIMP_AUDIENCE_ID
 
 
 
 
-export const fetchTeachers = async ({loggedInUser}) => {
+export const addSubscriptionAction = async ({firstName, lastName, email, phone, instrument}) => {
 
-        try {
-            await connectToMongoDB()
-    
-            if (loggedInUser === "Demo") {
-                console.log("If block fired++++++++++++++++++++=")
-                const usersArray = await User.find({$or: [{name: "Demo1"}, {name: "Demo2"}, {name: "Demo3"}]}).limit(3)
-                // return NextResponse.json({metaArray})
-                console.log("Logging metaArray from actions.js", usersArray)
+    try {
+        // Add a subscriber
+        await mailchimp.lists.addListMember(audienceID, {
+            email_address: email,
+            status: "subscribed",
+            merge_fields: {
+                "FNAME": firstName,
+                "LNAME": lastName,
+                "PHONE": phone,
+                "INSTRUMENT": instrument
             }
-    
-            // query meta collection
-            // const metaArray = await Meta.find({})
-            const usersArray = await User.find({ name: { $nin: ["Demo1", "Demo2", "Demo3", "Demo4", "Demo5"] } });
-    
-            console.log("Loggin usersArray from actions.js=========", usersArray)
-            return {success: true, usersArray: JSON.parse(JSON.stringify(usersArray))}
-            // return NextResponse.json({metaArray})
-    
-        } catch (error) {
-            console.log("Error getting data from db", error.message)
-        }
+        });
+
+
+        // Assign a tag to a subscriber
+        const formattedEmail = email.toLowerCase();
+        const subscriberHash = crypto.createHash("md5").update(formattedEmail).digest("hex");
+
+        await mailchimp.lists.updateListMemberTags(audienceID, subscriberHash, {
+            tags: [
+                { name: "current/returning students", status: "active" },
+                { name: instrument, status: "active" }
+            ],
+          });
+
+        console.log("Loggin res:", res)
+        return {message: "success"}
+
+    } catch (error) {
+        console.log("logging erorr:", error)
+        return {error: error.message}
+    }
     
 }
 

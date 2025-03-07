@@ -23,7 +23,6 @@ export const POST = async (req) => {
 
             const usersArray = await User.find({ name: { $nin: ["Demo1", "Demo2", "Demo3", "Demo4", "Demo5"] } });
 
-            console.log("Loggin usersArray from actions.js=========", usersArray)
             return NextResponse.json({success: true, usersArray}, {status: 200})
 
         } catch (error) {

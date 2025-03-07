@@ -60,7 +60,7 @@ export const NewRentalModal = ({handleCloseNewRentalModal, setNewRentalModalOpen
 
   return (
         <div className="overlay fixed z-50 top-0 left-0 w-full h-[100vh] bg-black bg-opacity-80 overflow-y-auto" onClick={(e) => handleCloseNewRentalModal(e)}>
-            <span className="exit absolute cursor-pointer top-1 right-5 text-gray-100 font-semibold text-[3rem]">&#10005;</span>
+            <span className="exit absolute cursor-pointer top-1 right-5 text-gray-100 font-semibold text-[2.5rem]">&#10005;</span>
             <form className="form-control w-[380px] max-w-[90%] mt-[70px] bg-gray-100 py-5 px-6 md:px-10 rounded-md mx-auto" onSubmit={handleSubmit}>
                 <h2 className="text-lg font-semibold text-gray-600 text-center pb-6">New Rental Form</h2>
                 <label className="input input-sm input-bordered flex items-center gap-4 mb-4">
