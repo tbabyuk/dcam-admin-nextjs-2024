@@ -13,10 +13,17 @@ const audienceID = process.env.MAILCHIMP_AUDIENCE_ID
 
 
 
-export const addSubscriptionAction = async ({firstName, lastName, email, phone, instrument}) => {
+export const addSubscriber = async (formData) => {
+
+    const firstName = formData.get("firstName")
+    const lastName = formData.get("lastName")
+    const email = formData.get("email")
+    const phone = formData.get("phone")
+    const instrument = formData.get("instrument")
+
 
     try {
-        // Add a subscriber
+        // Add subscriber
         await mailchimp.lists.addListMember(audienceID, {
             email_address: email,
             status: "subscribed",
@@ -28,7 +35,7 @@ export const addSubscriptionAction = async ({firstName, lastName, email, phone, 
             }
         });
 
-        // Assign a tag to a subscriber
+        // Assign tag to subscriber
         const formattedEmail = email.toLowerCase();
         const subscriberHash = crypto.createHash("md5").update(formattedEmail).digest("hex");
 
@@ -39,15 +46,14 @@ export const addSubscriptionAction = async ({firstName, lastName, email, phone, 
             ],
           });
 
-        return {status: 200, message: `Success! The email ${email} was successfully added to Mailchimp!`}
+        return {message: `Success! The email ${email} was successfully added to Mailchimp!`}
 
     } catch (error) {
         console.error("Error details:", error);
         if(error.response?.body?.title === "Member Exists") {
-            console.log("Member exists block fired")
-            return {status: 400, message: `Oops, looks like the email ${email} is already subscribed!`}
+            return {error: `Oops, looks like the email ${email} is already subscribed!`}
         } else {
-            return {status: 500, message: `Oops, something went wrong.`}
+            return {error: `Oops, something went wrong.`}
         }
     }
 }
