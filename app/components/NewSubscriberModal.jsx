@@ -38,12 +38,14 @@ export const NewSubscriberModal = ({handleCloseNewSubscriberModal, setNewSubscri
     setIsPending(true)
     e.preventDefault();
     try {
-        await addSubscriptionAction(newSubscriberObject)
-        console.log("Success!")
-        setSubscribeSuccess(`${newSubscriberObject.email} was successfully added to Mailchimp!`)
+        const res = await addSubscriptionAction(newSubscriberObject)
+        if(res.status === 200) {
+            setSubscribeSuccess(res.message)
+        } else {
+            setSubscribeError(res.message)
+        }
     } catch (error) {
-        setSubscribeError(`Oops, something went wrong with adding ${newSubscriberObject.email} to Mailchimp. Please ask Terry for help!`)
-        console.log("Error subscribing new user:", error.message)
+        setSubscribeError(`Oops, something went wrong. ${error.message}`)
     } finally {
         setIsPending(false)
         setNewSubscriberModalOpen(false)

@@ -13,7 +13,6 @@ const audienceID = process.env.MAILCHIMP_AUDIENCE_ID
 
 
 
-
 export const addSubscriptionAction = async ({firstName, lastName, email, phone, instrument}) => {
 
     try {
@@ -29,7 +28,6 @@ export const addSubscriptionAction = async ({firstName, lastName, email, phone, 
             }
         });
 
-
         // Assign a tag to a subscriber
         const formattedEmail = email.toLowerCase();
         const subscriberHash = crypto.createHash("md5").update(formattedEmail).digest("hex");
@@ -41,14 +39,17 @@ export const addSubscriptionAction = async ({firstName, lastName, email, phone, 
             ],
           });
 
-        console.log("Loggin res:", res)
-        return {message: "success"}
+        return {status: 200, message: `Success! The email ${email} was successfully added to Mailchimp!`}
 
     } catch (error) {
-        console.log("logging erorr:", error)
-        return {error: error.message}
+        console.error("Error details:", error);
+        if(error.response?.body?.title === "Member Exists") {
+            console.log("Member exists block fired")
+            return {status: 400, message: `Oops, looks like the email ${email} is already subscribed!`}
+        } else {
+            return {status: 500, message: `Oops, something went wrong.`}
+        }
     }
-    
 }
 
 
